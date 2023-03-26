@@ -24,29 +24,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "properties": {
-                                    "email": {
-                                        "description": "Email address field <br /> The field is required.",
-                                        "type": "string",
-                                        "example": "test@gmail.com"
-                                    },
-                                    "password": {
-                                        "description": "Password field <br /> The field is required.",
-                                        "type": "string",
-                                        "example": "test1234"
-                                    },
-                                    "firstName": {
-                                        "description": "First name field <br /> The field is optional.",
-                                        "type": "string",
-                                        "example": "Jan"
-                                    },
-                                    "lastName": {
-                                        "description": "Last name field <br /> The field is optional.",
-                                        "type": "string",
-                                        "example": "Kowalski"
-                                    }
-                                },
-                                "type": "object"
+                                "$ref": "#/components/schemas/RegisterRequest"
                             }
                         }
                     }
@@ -70,19 +48,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "properties": {
-                                    "email": {
-                                        "description": "Email address field <br /> The field is required.",
-                                        "type": "string",
-                                        "example": "test@gmail.com"
-                                    },
-                                    "password": {
-                                        "description": "Password field <br /> The field is required.",
-                                        "type": "string",
-                                        "example": "test1234"
-                                    }
-                                },
-                                "type": "object"
+                                "$ref": "#/components/schemas/LoginRequest"
                             }
                         }
                     }
@@ -199,19 +165,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "properties": {
-                                    "firstName": {
-                                        "description": "First name field <br /> The field is optional.",
-                                        "type": "string",
-                                        "example": "Jan"
-                                    },
-                                    "lastName": {
-                                        "description": "Last name field <br /> The field is optional.",
-                                        "type": "string",
-                                        "example": "Kowalski"
-                                    }
-                                },
-                                "type": "object"
+                                "$ref": "#/components/schemas/UpdateUserRequest"
                             }
                         }
                     }
@@ -257,6 +211,46 @@
     },
     "components": {
         "schemas": {
+            "LoginRequest": {
+                "properties": {
+                    "email": {
+                        "description": "Email address field <br /> The field is required.",
+                        "type": "string",
+                        "example": "test@gmail.com"
+                    },
+                    "password": {
+                        "description": "Password field <br /> The field is required.",
+                        "type": "string",
+                        "example": "test1234"
+                    }
+                },
+                "type": "object"
+            },
+            "RegisterRequest": {
+                "properties": {
+                    "email": {
+                        "description": "Email address field <br /> The field is required.",
+                        "type": "string",
+                        "example": "test@gmail.com"
+                    },
+                    "password": {
+                        "description": "Password field <br /> The field is required.",
+                        "type": "string",
+                        "example": "test1234"
+                    },
+                    "firstName": {
+                        "description": "First name field <br /> The field is optional.",
+                        "type": "string",
+                        "example": "Jan"
+                    },
+                    "lastName": {
+                        "description": "Last name field <br /> The field is optional.",
+                        "type": "string",
+                        "example": "Kowalski"
+                    }
+                },
+                "type": "object"
+            },
             "UpdateProfileRequest": {
                 "type": "object",
                 "allOf": [

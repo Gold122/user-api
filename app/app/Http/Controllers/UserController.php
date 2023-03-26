@@ -55,19 +55,8 @@ class UserController extends Controller
      *      @OA\MediaType(
      *       mediaType="application/json",
      *       @OA\Schema(
-     *         @OA\Property(
-     *           property="firstName",
-     *           example="Jan",
-     *           description="First name field <br /> The field is optional.",
-     *           type="string"
-     *         ),
-     *         @OA\Property(
-     *           property="lastName",
-     *           example="Kowalski",
-     *           description="Last name field <br /> The field is optional.",
-     *           type="string"
-     *         ),
-     *       ),
+     *          ref="#/components/schemas/UpdateUserRequest"
+     *       )
      *      ),
      *     ),
      *     @OA\Response (

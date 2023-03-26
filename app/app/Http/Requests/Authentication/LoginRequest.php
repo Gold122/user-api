@@ -4,6 +4,22 @@ namespace App\Http\Requests\Authentication;
 
 use App\Http\Requests\AbstractApiRequest;
 
+/**
+ *  @OA\Schema(
+ *    @OA\Property(
+ *      property="email",
+ *      example="test@gmail.com",
+ *      description="Email address field <br /> The field is required.",
+ *      type="string"
+ *    ),
+ *    @OA\Property(
+ *      property="password",
+ *      example="test1234",
+ *      description="Password field <br /> The field is required.",
+ *      type="string"
+ *    ),
+ *  ),
+ */
 class LoginRequest extends AbstractApiRequest
 {
     /**

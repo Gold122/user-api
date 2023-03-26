@@ -26,31 +26,8 @@ class AuthenticationController extends Controller
      *      @OA\MediaType(
      *       mediaType="application/json",
      *       @OA\Schema(
-     *         @OA\Property(
-     *           property="email",
-     *           example="test@gmail.com",
-     *           description="Email address field <br /> The field is required.",
-     *           type="string"
-     *         ),
-     *         @OA\Property(
-     *           property="password",
-     *           example="test1234",
-     *           description="Password field <br /> The field is required.",
-     *           type="string"
-     *         ),
-     *         @OA\Property(
-     *           property="firstName",
-     *           example="Jan",
-     *           description="First name field <br /> The field is optional.",
-     *           type="string"
-     *         ),
-     *         @OA\Property(
-     *           property="lastName",
-     *           example="Kowalski",
-     *           description="Last name field <br /> The field is optional.",
-     *           type="string"
-     *         ),
-     *       ),
+     *          ref="#/components/schemas/RegisterRequest"
+     *       )
      *      ),
      *     ),
      *     @OA\Response(
@@ -81,19 +58,8 @@ class AuthenticationController extends Controller
      *      @OA\MediaType(
      *       mediaType="application/json",
      *       @OA\Schema(
-     *         @OA\Property(
-     *           property="email",
-     *           example="test@gmail.com",
-     *           description="Email address field <br /> The field is required.",
-     *           type="string"
-     *         ),
-     *         @OA\Property(
-     *           property="password",
-     *           example="test1234",
-     *           description="Password field <br /> The field is required.",
-     *           type="string"
-     *         ),
-     *       ),
+     *          ref="#/components/schemas/LoginRequest"
+     *       )
      *      ),
      *     ),
      *     @OA\Response(
