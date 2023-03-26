@@ -19,7 +19,7 @@ class UserResource extends JsonResource
             'email' => $this->email,
             'firstName' => $this->first_name,
             'lastName' => $this->last_name,
-            'avatar' => asset('storage/' . $this->avatar)
+            'avatar' => $this->when($this->avatar, asset('storage/' . $this->avatar))
         ];
     }
 }
