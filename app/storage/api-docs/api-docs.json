@@ -1,0 +1,312 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Senpai API",
+        "description": "Senpai API",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost/api",
+            "description": "Api server"
+        }
+    ],
+    "paths": {
+        "/register": {
+            "post": {
+                "tags": [
+                    "Authorization"
+                ],
+                "summary": "Register new account.",
+                "operationId": "register",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "description": "Email address field <br /> The field is required.",
+                                        "type": "string",
+                                        "example": "test@gmail.com"
+                                    },
+                                    "password": {
+                                        "description": "Password field <br /> The field is required.",
+                                        "type": "string",
+                                        "example": "test1234"
+                                    },
+                                    "firstName": {
+                                        "description": "First name field <br /> The field is optional.",
+                                        "type": "string",
+                                        "example": "Jan"
+                                    },
+                                    "lastName": {
+                                        "description": "Last name field <br /> The field is optional.",
+                                        "type": "string",
+                                        "example": "Kowalski"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": [
+                    "Authorization"
+                ],
+                "summary": "Login to account.",
+                "operationId": "login",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "description": "Email address field <br /> The field is required.",
+                                        "type": "string",
+                                        "example": "test@gmail.com"
+                                    },
+                                    "password": {
+                                        "description": "Password field <br /> The field is required.",
+                                        "type": "string",
+                                        "example": "test1234"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "accessToken": {
+                                            "description": "",
+                                            "type": "string",
+                                            "example": "id|token"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden."
+                    }
+                }
+            }
+        },
+        "/logout": {
+            "delete": {
+                "tags": [
+                    "Authorization"
+                ],
+                "summary": "Logout from account.",
+                "operationId": "logout",
+                "responses": {
+                    "401": {
+                        "description": "Unauthenticated."
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/users/me": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Update user.",
+                "operationId": "updateProfile",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateProfileRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "401": {
+                        "description": "Unauthenticated."
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get all users.",
+                "operationId": "users",
+                "responses": {
+                    "401": {
+                        "description": "Unauthenticated."
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/users/{user_id}": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Update user.",
+                "operationId": "updateUser",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true,
+                        "example": "1"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "firstName": {
+                                        "description": "First name field <br /> The field is optional.",
+                                        "type": "string",
+                                        "example": "Jan"
+                                    },
+                                    "lastName": {
+                                        "description": "Last name field <br /> The field is optional.",
+                                        "type": "string",
+                                        "example": "Kowalski"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "401": {
+                        "description": "Unauthenticated."
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Remove user.",
+                "operationId": "removeUser",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true,
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthenticated."
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "UpdateProfileRequest": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/UpdateUserRequest"
+                    },
+                    {
+                        "properties": {
+                            "firstName": {
+                                "description": "First name field <br /> The field is optional.",
+                                "type": "string",
+                                "example": "Jan"
+                            },
+                            "lastName": {
+                                "description": "Last name field <br /> The field is optional.",
+                                "type": "string",
+                                "example": "Kowalski"
+                            },
+                            "avatar": {
+                                "description": "file to upload",
+                                "type": "file",
+                                "format": "file"
+                            }
+                        }
+                    }
+                ]
+            },
+            "UpdateUserRequest": {
+                "properties": {
+                    "firstName": {
+                        "description": "First name field <br /> The field is optional.",
+                        "type": "string",
+                        "example": "Jan"
+                    },
+                    "lastName": {
+                        "description": "Last name field <br /> The field is optional.",
+                        "type": "string",
+                        "example": "Kowalski"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "sanctum": {
+                "type": "apiKey",
+                "description": "Enter token in format (Bearer <token>)",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    }
+}

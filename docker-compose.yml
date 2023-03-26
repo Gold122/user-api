@@ -1,0 +1,30 @@
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    volumes:
+      - ./app/:/var/www/html/
+      - ./logs/nginx:/var/log/nginx/
+    ports:
+      - 80:80
+  php:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    user: ${CURRENT_UID:-1000}
+    volumes:
+      - ./app:/var/www/html
+      - ./logs/php/php.log:/var/log/fpm-php.www.log
+
+  mariadb:
+    image: mariadb:latest
+    environment:
+      - MARIADB_ROOT_PASSWORD=root
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    ports:
+      - 8000:80
+    environment:
+      - PMA_ARBITRARY=1
