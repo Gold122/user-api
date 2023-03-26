@@ -5,7 +5,7 @@ namespace App\Traits;
 trait CanThrowTrait
 {
     /**
-     * Throw exceeption
+     * Throw exception.
      *
      * @param string $exceptionClass
      */

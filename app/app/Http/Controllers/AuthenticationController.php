@@ -9,6 +9,9 @@ use Illuminate\Http\JsonResponse;
 
 class AuthenticationController extends Controller
 {
+    /**
+     * @param AuthenticationService $authenticationService
+     */
     public function __construct(private readonly AuthenticationService $authenticationService) {}
 
     /**
