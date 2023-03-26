@@ -11,8 +11,8 @@ use Illuminate\Routing\Controller as BaseController;
 /**
  * @OA\Info(
  *      version="1.0.0",
- *      title="Senpai API",
- *      description="Senpai API",
+ *      title="User API",
+ *      description="User API",
  * )
  *
  * @OA\Server(
