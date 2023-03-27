@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Http\Requests\User\UpdateUserRequest;
 use App\Http\Resources\UserCollection;
 use App\Models\User;
 

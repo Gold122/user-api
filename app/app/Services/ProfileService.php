@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Helpers\Avatar\AvatarHelper;
-use App\Http\Requests\Profile\UpdateProfileRequest;
 use App\Models\User;
 
 class ProfileService extends AbstractService

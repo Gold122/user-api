@@ -3,8 +3,6 @@
 namespace App\Services;
 
 use App\Exceptions\Authentication\EmailOrPasswordIsIncorrectException;
-use App\Http\Requests\Authentication\LoginRequest;
-use App\Http\Requests\Authentication\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
