@@ -21,14 +21,14 @@ class UserService extends AbstractService
      * Update user.
      *
      * @param User $user
-     * @param UpdateUserRequest $request
+     * @param array $request
      * @return void
      */
-    public function update(User $user, UpdateUserRequest $request): void
+    public function update(User $user, array $request): void
     {
         $user->update([
-            'first_name' => $request->firstName ?? $user->first_name,
-            'last_name' => $request->lastName ?? $user->last_name
+            'first_name' => $request['firstName'] ?? $user->first_name,
+            'last_name' => $request['lastName'] ?? $user->last_name
         ]);
     }
 

@@ -41,7 +41,7 @@ class AuthenticationController extends Controller
      */
     public function register(RegisterRequest $request): JsonResponse
     {
-        $this->authenticationService->register($request);
+        $this->authenticationService->register($request->validated());
 
         return $this->msg('auth.successfulRegisterAccount');
     }
@@ -86,7 +86,7 @@ class AuthenticationController extends Controller
     public function login(LoginRequest $request): JsonResponse
     {
         return $this->success([
-            'accessToken' => $this->authenticationService->login($request)
+            'accessToken' => $this->authenticationService->login($request->validated())
         ]);
     }
 

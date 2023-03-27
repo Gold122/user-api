@@ -15,30 +15,30 @@ class AuthenticationService extends AbstractService
     /**
      * Register new account.
      *
-     * @param RegisterRequest $request
+     * @param array $request
      *
      * @return void
      */
-    public function register(RegisterRequest $request): void
+    public function register(array $request): void
     {
         User::create([
-            'email' => $request->email,
-            'password' => $request->password,
-            'first_name' => $request->firstName,
-            'last_name' => $request->lastName
+            'email' => $request['email'],
+            'password' => $request['password'],
+            'first_name' => $request['firstName'] ?? '',
+            'last_name' => $request['lastName'] ?? ''
         ]);
     }
 
     /**
      * Login to account.
      *
-     * @param LoginRequest $request
+     * @param array $request
      * @return void|string
      */
-    public function login(LoginRequest $request)
+    public function login(array $request)
     {
-        if (Auth::attempt($request->validated())) {
-            $user = User::where(['email' => $request->email])->first();
+        if (Auth::attempt($request)) {
+            $user = User::where(['email' => $request['email']])->first();
 
             return $user->createToken('token')->plainTextToken;
         }

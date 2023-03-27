@@ -7,7 +7,7 @@ COPY ./docker/php/entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
 RUN chmod +x /usr/local/bin/install-php-extensions && \
-    install-php-extensions @composer pdo_mysql
+    install-php-extensions @composer pdo_mysql gd
 
 RUN apk update --no-cache && apk add git
 

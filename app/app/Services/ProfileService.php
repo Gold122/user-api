@@ -17,19 +17,19 @@ class ProfileService extends AbstractService
      * Update user.
      *
      * @param User $user
-     * @param UpdateProfileRequest $request
+     * @param array $request
      * @return void
      */
-    public function update(User $user, UpdateProfileRequest $request): void
+    public function update(User $user, array $request): void
     {
-        if ($request->avatar) {
-            $avatarFile = $this->avatarHelper->saveAvatar($request->avatar);
+        if (isset($request['avatar'])) {
+            $avatarFile = $this->avatarHelper->saveAvatar($request['avatar']);
         }
 
         $user->update([
-            'first_name' => $request->firstName ?? $user->first_name,
-            'last_name' => $request->lastName ?? $user->last_name,
-            'avatar' => $request->avatar ? $avatarFile : $user->avatar
+            'first_name' => $request['firstName'] ?? $user->first_name,
+            'last_name' => $request['lastName'] ?? $user->last_name,
+            'avatar' => isset($request['avatar']) ? $avatarFile : $user->avatar
         ]);
     }
 }
